@@ -2,8 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Gallery from './Gallery' // Import the Gallery component
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom' // For routing
+import Gallery from './Components/Gallery' // Import the Gallery component
 
 function App() {
   // State to hold all tours
@@ -19,38 +18,28 @@ function App() {
   }
 
   return (
-    <Router>
-      <div>
-        <header>
-          <div>
-            <a href="https://vite.dev" target="_blank">
-              <img src={viteLogo} className="logo" alt="Vite logo" />
-            </a>
-            <a href="https://react.dev" target="_blank">
-              <img src={reactLogo} className="logo react" alt="React logo" />
-            </a>
-          </div>
-          <h1>Vite + React</h1>
-        </header>
-        <main>
-          <Routes>
-            {/* Define routes */}
-            <Route
-              path="/"
-              element={
-                <Gallery tours={tours} removeTour={removeTour} />
-              }
-            />
-            {/* Add more routes here if needed */}
-          </Routes>
-        </main>
-        <footer>
-          <p className="read-the-docs">
-            Click on the Vite and React logos to learn more
-          </p>
-        </footer>
-      </div>
-    </Router>
+    <div>
+      <header>
+        <div>
+          <a href="https://vite.dev" target="_blank">
+            <img src={viteLogo} className="logo" alt="Vite logo" />
+          </a>
+          <a href="https://react.dev" target="_blank">
+            <img src={reactLogo} className="logo react" alt="React logo" />
+          </a>
+        </div>
+        <h1>Vite + React</h1>
+      </header>
+      <main>
+        {/* Render the Gallery component directly */}
+        <Gallery tours={tours} removeTour={removeTour} />
+      </main>
+      <footer>
+        <p className="read-the-docs">
+          Click on the Vite and React logos to learn more
+        </p>
+      </footer>
+    </div>
   )
 }
 
