@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import TourCard from './TourCard' // Import the TourCard component
 
-function Gallery({ tours, removeTour }) {
+function Gallery() {
   const [fetchedTours, setFetchedTours] = useState([])
   const [error, setError] = useState(null) // State for error handling
 
@@ -24,6 +24,11 @@ function Gallery({ tours, removeTour }) {
     fetchTours()
   }, [])
 
+  // Function to remove a tour by id
+  const removeTour = (id) => {
+    setFetchedTours((prevTours) => prevTours.filter((tour) => tour.id !== id))
+  }
+
   if (error) {
     return <p>Error fetching tours: {error}</p> // Display error message
   }
@@ -31,7 +36,15 @@ function Gallery({ tours, removeTour }) {
   return (
     <div className="gallery">
       {fetchedTours.map((tour) => (
-        <TourCard key={tour.id} tour={tour} removeTour={removeTour} />
+        <TourCard
+          key={tour.id}
+          id={tour.id}
+          name={tour.name || 'Unknown Tour'}
+          info={tour.info || 'No description available.'}
+          price={tour.price || '0'}
+          image={tour.image || 'https://via.placeholder.com/150'}
+          onRemove={removeTour} // Pass the removeTour function
+        />
       ))}
     </div>
   )

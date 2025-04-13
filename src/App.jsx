@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import './styles/styles.css' // Import the styles.css file
 import Gallery from './Components/Gallery' // Import the Gallery component
 
 function App() {
@@ -35,9 +36,7 @@ function App() {
         <Gallery tours={tours} removeTour={removeTour} />
       </main>
       <footer>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
+       
       </footer>
     </div>
   )
